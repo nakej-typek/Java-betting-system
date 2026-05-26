@@ -1,0 +1,13 @@
+cz\fi\muni\pb162\betting\services\BettorServiceBalancesTest.class
+cz\fi\muni\pb162\betting\services\BettorServiceImplTest.class
+cz\fi\muni\pb162\betting\model\outcome\WithdrawalOutcomeTest.class
+cz\fi\muni\pb162\betting\services\storage\JsonCompetitionRepositoryTest.class
+cz\fi\muni\pb162\betting\model\bet\OddsHistoryTest.class
+cz\fi\muni\pb162\betting\helpers\Dummy.class
+cz\fi\muni\pb162\betting\model\bet\BettingMarketTest.class
+cz\fi\muni\pb162\betting\services\CompetitionServiceImplTest.class
+cz\fi\muni\pb162\betting\services\ResultEvaluatorServiceImplTest.class
+cz\fi\muni\pb162\betting\model\outcome\PlacementOutcomeTest.class
+cz\fi\muni\pb162\betting\model\competition\GroupStageTest.class
+cz\fi\muni\pb162\betting\DummyTest.class
+cz\fi\muni\pb162\betting\model\outcome\WinnerOutcomeTest.class

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\app\BetsDemo.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\app\ConsolePrinter.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\app\DemoIds.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\app\SportsDemo.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bet\Bet.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bet\Bettable.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bet\BettingMarket.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bet\OddsHistory.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bettor\Bettor.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\bettor\RegisteredBettor.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\AbstractCompetition.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\Competition.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\CompetitionStatus.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\GroupStage.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\KnockoutBracket.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\Match.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\Race.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\RankableCompetition.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\Sport.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\competition\SportEvent.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\outcome\Outcome.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\outcome\PlacementOutcome.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\outcome\WinnerOutcome.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\outcome\WithdrawalOutcome.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\participant\BaseParticipant.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\participant\Participant.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\participant\Player.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\participant\Team.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\CancelationReason.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\CancelledResult.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\CompetitionResult.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\MatchResult.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\ParticipantRaceStatus.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\RaceResult.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\model\result\StandingsResult.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\BettingBrokerService.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\BettingBrokerServiceImpl.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\BettorService.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\BettorServiceImpl.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\CompetitionService.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\CompetitionServiceImpl.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\dto\BettorBalance.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\ResultEvaluatorService.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\ResultEvaluatorServiceImpl.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\storage\CompetitionRepository.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\storage\json\JsonCompetitionRepository.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\storage\json\PolymorphicMixins.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\storage\json\RaceResultJson.java">
+</file>
+<file name="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\src\main\java\cz\fi\muni\pb162\betting\services\storage\PersistenceSnapshot.java">
+</file>
+</checkstyle>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.071" tests="6" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-booter\3.5.3\surefire-booter-3.5.3.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-api\3.5.3\surefire-api-3.5.3.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-extensions-spi\3.5.3\surefire-extensions-spi-3.5.3.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-shared-utils\3.5.3\surefire-shared-utils-3.5.3.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-logger-api\3.5.3\surefire-logger-api-3.5.3.jar;C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\target\test-classes;C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\target\classes;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter\6.1.0\junit-jupiter-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-api\6.1.0\junit-jupiter-api-6.1.0.jar;C:\Users\JP\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\JP\.m2\repository\org\junit\platform\junit-platform-commons\6.1.0\junit-platform-commons-6.1.0.jar;C:\Users\JP\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\JP\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-params\6.1.0\junit-jupiter-params-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-engine\6.1.0\junit-jupiter-engine-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\platform\junit-platform-engine\6.1.0\junit-platform-engine-6.1.0.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.2\jackson-databind-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.2\jackson-annotations-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.2\jackson-core-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.2\jackson-module-parameter-names-2.18.2.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\surefire-junit-platform\3.5.3\surefire-junit-platform-3.5.3.jar;C:\Users\JP\.m2\repository\org\apache\maven\surefire\common-java5\3.5.3\common-java5-3.5.3.jar;C:\Users\JP\.m2\repository\org\junit\platform\junit-platform-launcher\6.1.0\junit-platform-launcher-6.1.0.jar"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Prague"/>
+    <property name="user.country.format" value="CZ"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\JP\AppData\Local\Temp\surefire11631375185165699143 2026-05-27T01-10-13_619-jvmRun1 surefire-20260527011014457_1tmp surefire_0-20260527011014457_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\target\test-classes;C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore\target\classes;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter\6.1.0\junit-jupiter-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-api\6.1.0\junit-jupiter-api-6.1.0.jar;C:\Users\JP\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\JP\.m2\repository\org\junit\platform\junit-platform-commons\6.1.0\junit-platform-commons-6.1.0.jar;C:\Users\JP\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\JP\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-params\6.1.0\junit-jupiter-params-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\jupiter\junit-jupiter-engine\6.1.0\junit-jupiter-engine-6.1.0.jar;C:\Users\JP\.m2\repository\org\junit\platform\junit-platform-engine\6.1.0\junit-platform-engine-6.1.0.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.2\jackson-databind-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.2\jackson-annotations-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.2\jackson-core-2.18.2.jar;C:\Users\JP\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.2\jackson-module-parameter-names-2.18.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\JP"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-25.0.2"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
+    <property name="user.name" value="JP"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="IBM437"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2025.3.2\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="localRepository" value="C:\Users\JP\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\JP\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2025.3.2"/>
+    <property name="java.version" value="25.0.2"/>
+    <property name="user.dir" value="C:\Users\JP\Desktop\PB162-hws\HW01\2026-hw01-betcore"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.language.format" value="cs"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Tailscale\;C:\Users\JP\.local\bin;C:\Users\JP\AppData\Local\Programs\Python\Launcher\;C:\Users\JP\AppData\Local\Microsoft\WindowsApps;C:\Users\JP\Desktop\Aliases;C:\Users\JP\AppData\Local\JetBrains\Toolbox\scripts;C:\Program Files\Git\cmd;C:\Users\JP\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\JetBrains Rider 2025.3.2\bin;C:\Users\JP\.dotnet\tools;C:\Program Files\dotnet\dotnet.exe;C:\Program Files\JetBrains\PyCharm 2025.3.3\bin;C:\Users\JP\AppData\Roaming\npm;C:\Users\JP\Claudoslav\SpeechToText;C:\Users\JP\AppData\Local\Programs\Warp\bin;C:\Users\JP\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\JP\AppData\Local\Programs\Zed\bin;C:\Program Files (x86)\Vim\vim9x;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.2+10-LTS-69"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\JP\.m2\repository"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="addBetIsRecorded" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.038"/>
+  <testcase name="unknownOutcomeReturnsNullCurrentOdds" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.002"/>
+  <testcase name="getAvailableOutcomesContainsAddedOnes" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.003"/>
+  <testcase name="updateOddsAppendsToHistory" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.002"/>
+  <testcase name="marketCarriesItsCompetition" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.001"/>
+  <testcase name="addOutcomeStoresInitialOdds" classname="cz.fi.muni.pb162.betting.model.bet.BettingMarketTest" time="0.001"/>
+</testsuite>

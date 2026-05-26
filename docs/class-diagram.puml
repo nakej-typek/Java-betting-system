@@ -1,0 +1,229 @@
+@startuml BetCore
+title BetCore - HW01 (cz.fi.muni.pb162.betting)
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+hide empty members
+
+' =====================================================================
+package "model.participant" {
+    interface Participant {
+        +getId(): String
+        +getName(): String
+    }
+    abstract class BaseParticipant implements Participant {
+        -id: String
+        -name: String
+    }
+    class Player extends BaseParticipant
+    class Team   extends BaseParticipant
+}
+
+' =====================================================================
+package "model.competition" {
+    enum CompetitionStatus {
+        UPCOMING
+        ONGOING
+        FINISHED
+        CANCELLED
+    }
+
+    class Sport {
+        -id: String
+        -name: String
+    }
+
+    class SportEvent {
+        -id: String
+        -name: String
+    }
+
+    interface Competition {
+        +getName(): String
+        +getStatus(): CompetitionStatus
+        +setStatus(CompetitionStatus)
+        +getSportEvent(): SportEvent
+        +getParticipants(): List<Participant>
+        +getSport(): Sport
+    }
+
+    interface RankableCompetition {
+        +getRanking(): List<Participant>
+    }
+    RankableCompetition --|> Competition
+
+    abstract class "AbstractCompetition<R>" as AbstractCompetition {
+        -participants: List<Participant>
+        -status: CompetitionStatus
+        -sportEvent: SportEvent
+        -sport: Sport
+        -result: R
+    }
+    AbstractCompetition ..|> Competition
+
+    class Match {
+        -home: Participant
+        -away: Participant
+        -result: MatchResult
+    }
+    class Race
+    class GroupStage {
+        -matches: List<Match>
+    }
+    class KnockoutBracket {
+        -matches: List<Match>
+    }
+
+    Match            ..|> Competition
+    Race             --|> AbstractCompetition
+    GroupStage       --|> AbstractCompetition
+    KnockoutBracket  --|> AbstractCompetition
+    Race             ..|> RankableCompetition
+    GroupStage       ..|> RankableCompetition
+    KnockoutBracket  ..|> RankableCompetition
+
+    Competition  --> "1" Sport
+    Competition  --> "1" SportEvent
+    Competition  --> "*" Participant
+    GroupStage   *--> "*" Match
+    KnockoutBracket *--> "*" Match
+}
+
+' =====================================================================
+package "model.result" {
+    interface CompetitionResult <<marker>>
+
+    enum CancelationReason {
+        WITHDRAWAL
+        WEATHER
+        TECHNICAL
+        OTHER
+    }
+    enum ParticipantRaceStatus {
+        FINISHED
+        DNS
+        DNF
+        DSQ
+    }
+
+    class MatchResult     <<record>>
+    class RaceResult      <<record>>
+    class StandingsResult <<record>>
+    class CancelledResult <<record>>
+
+    MatchResult     ..|> CompetitionResult
+    RaceResult      ..|> CompetitionResult
+    StandingsResult ..|> CompetitionResult
+    CancelledResult ..|> CompetitionResult
+
+    MatchResult     --> Outcome : outcome
+    RaceResult      --> "*" Participant : finishOrder
+    RaceResult      --> "*" ParticipantRaceStatus
+    StandingsResult --> "*" Participant : standings
+    CancelledResult --> CancelationReason
+}
+
+Match           --> MatchResult
+Race            --> RaceResult
+GroupStage      --> StandingsResult
+KnockoutBracket --> StandingsResult
+
+' =====================================================================
+package "model.outcome" {
+    interface Outcome {
+        +matches(CompetitionResult): boolean
+    }
+    class WinnerOutcome    <<record>>
+    class DrawOutcome      <<record>>
+    class PlacementOutcome <<record>>
+
+    WinnerOutcome    ..|> Outcome
+    DrawOutcome      ..|> Outcome
+    PlacementOutcome ..|> Outcome
+
+    WinnerOutcome    --> Participant : winner
+    PlacementOutcome --> Participant : participant
+}
+
+' =====================================================================
+package "model.bettor" {
+    interface Bettor {
+        +getId(): String
+        +getName(): String
+        +getBalance(): double
+        +setBalance(double)
+    }
+    class RegisteredBettor implements Bettor {
+        -id: String
+        -name: String
+        -balance: double
+    }
+}
+
+' =====================================================================
+package "model.bet" {
+    interface Bettable <<marker>>
+
+    class OddsHistory {
+        -history: List<Double>
+        +addOdds(double)
+        +getCurrentOdds(): Double
+        +getOddsAt(int): double
+    }
+
+    class Bet <<record>> {
+        +bettor: Bettor
+        +amount: double
+        +outcome: Outcome
+        +odds: double
+    }
+    Bet --> Bettor
+    Bet --> Outcome
+
+    class BettingMarket {
+        -competition: Competition
+        -oddsPerOutcome: Map<Outcome,OddsHistory>
+        -bets: List<Bet>
+        +addOutcome(Outcome,double)
+        +updateOdds(Outcome,double)
+        +addBet(Bet)
+        +getCurrentOdds(Outcome): Double
+    }
+    BettingMarket --> Competition
+    BettingMarket *--> "*" OddsHistory
+    BettingMarket *--> "*" Bet
+}
+
+' Competitions that can be bet on are marked Bettable
+Match           ..|> Bettable
+Race            ..|> Bettable
+GroupStage      ..|> Bettable
+KnockoutBracket ..|> Bettable
+
+' =====================================================================
+package "services" {
+    interface CompetitionService
+    interface BettingBrokerService
+    interface BettorService
+    interface ResultEvaluatorService
+
+    class CompetitionServiceImpl     implements CompetitionService
+    class BettingBrokerServiceImpl   implements BettingBrokerService
+    class BettorServiceImpl          implements BettorService
+    class ResultEvaluatorServiceImpl implements ResultEvaluatorService
+
+    ResultEvaluatorServiceImpl --> BettorService
+
+    BettingBrokerService ..> BettingMarket : manages
+    BettorService        ..> Bet           : creates
+    CompetitionService   ..> Competition   : creates
+    ResultEvaluatorService ..> BettingMarket
+    ResultEvaluatorService ..> CompetitionResult
+}
+
+' =====================================================================
+package "app" {
+    class Main
+}
+
+@enduml

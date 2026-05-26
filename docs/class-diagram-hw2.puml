@@ -1,0 +1,292 @@
+@startuml BetCore-HW2
+title BetCore - HW02
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+hide empty members
+
+' =====================================================================
+' PRESENTATION LAYER
+' =====================================================================
+package "app" <<presentation>> {
+    class SportsDemo {
+        +main(String[])
+        -setupHockeyWorldCup()
+        -setupPragueMarathon()
+    }
+
+    class BetsDemo {
+        +main(String[])
+        -setOddsForHockey()
+        -setOddsForMarathon()
+        -placeBets()
+        -recordMarathonResults()
+        -printBalances()
+        -printExtras()
+    }
+
+    class ConsolePrinter {
+        +header(String)
+        +bet(String, double, String, double)
+        +match(Match, Participant)
+        +ranking(List<Participant>)
+        +printBalances(List<BettorBalance>)
+        +printBettors(List<Bettor>)
+    }
+
+    SportsDemo ..> CompetitionService
+    BetsDemo   ..> CompetitionService
+    BetsDemo   ..> BettingBrokerService
+    BetsDemo   ..> BettorService
+    BetsDemo   ..> ResultEvaluatorService
+    BetsDemo   ..> ConsolePrinter
+}
+
+' =====================================================================
+' APPLICATION LAYER
+' =====================================================================
+package "services" <<application>> {
+    interface CompetitionService {
+        +createSport(id, name): Sport
+        +createSportEvent(id, name): SportEvent
+        +createMatch(...): Match
+        +createRace(...): Race
+        +createGroupStage(...): GroupStage
+        +createKnockoutBracket(...): KnockoutBracket
+        +recordResult(...)
+        +cancelCompetition(...)
+        +getSport(id): Sport
+        +getSportEvent(id): SportEvent
+        +getCompetition(id): Competition
+        +getCompetitions(SportEvent): List<Competition>
+        +saveAll()
+        +loadAll()
+    }
+
+    interface BettingBrokerService {
+        +createMarket(Bettable): BettingMarket
+        +addOutcome(market, outcome, odds)
+        +updateOdds(market, outcome, odds)
+        +getMarket(Competition): BettingMarket
+        +getMarket(competitionId): BettingMarket
+    }
+
+    interface BettorService {
+        +registerBettor(id, name, balance): RegisteredBettor
+        +placeBet(bettor, market, outcome, amount): Bet
+        +getBalances(SportEvent): List<BettorBalance>
+        +getBettorsForCompetition(Competition): List<Bettor>
+        +getBettorsByTotalStake(): List<Bettor>
+        +getBets(Bettor): List<Bet>
+        +creditWinnings(Bettor, double)
+    }
+
+    interface ResultEvaluatorService {
+        +settleMarket(BettingMarket, CompetitionResult)
+    }
+
+    class CompetitionServiceImpl
+    class BettingBrokerServiceImpl
+    class BettorServiceImpl
+    class ResultEvaluatorServiceImpl
+
+    CompetitionServiceImpl     ..|> CompetitionService
+    BettingBrokerServiceImpl   ..|> BettingBrokerService
+    BettorServiceImpl          ..|> BettorService
+    ResultEvaluatorServiceImpl ..|> ResultEvaluatorService
+
+    ResultEvaluatorServiceImpl --> BettorService
+    BettorServiceImpl          --> CompetitionService
+    BettorServiceImpl          --> BettingBrokerService
+}
+
+' =====================================================================
+' PERSISTENCE LAYER
+' =====================================================================
+package "services.storage" <<persistence>> {
+    interface CompetitionRepository {
+        +saveAll(PersistenceSnapshot)
+        +loadAll(): PersistenceSnapshot
+    }
+
+    class PersistenceSnapshot <<record>> {
+        +sportEvents: List<SportEvent>
+        +competitions: List<Competition>
+        +resultsByCompetitionId: Map<String, CompetitionResult>
+    }
+
+    class JsonCompetitionRepository {
+        -file: Path
+        -mapper: ObjectMapper
+        +JsonCompetitionRepository(Path)
+    }
+
+    JsonCompetitionRepository  ..|> CompetitionRepository
+    CompetitionRepository      ..> PersistenceSnapshot
+    CompetitionServiceImpl     --> CompetitionRepository
+}
+
+' =====================================================================
+' DATA TRANSFER OBJECTS
+' =====================================================================
+package "services.dto" {
+    class BettorBalance <<record>> {
+        +bettor: Bettor
+        +totalStaked: double
+        +totalWon: double
+        +totalLost: double
+        +netResult(): double
+    }
+
+    BettorService .up.> BettorBalance
+}
+
+' =====================================================================
+' DOMAIN MODEL
+' =====================================================================
+package "model.competition" {
+    interface Competition {
+        +getId(): String
+        +getName(): String
+        +getStatus(): CompetitionStatus
+        +getSportEvent(): SportEvent
+        +getSport(): Sport
+        +getParticipants(): List<Participant>
+        +getResult(): CompetitionResult
+        +cancel(CancelledResult)
+    }
+
+    interface RankableCompetition {
+        +getRanking(): List<Participant>
+    }
+
+    abstract class AbstractCompetition
+
+    class Match
+    class Race
+    class GroupStage
+    class KnockoutBracket
+    class SportEvent
+    class Sport
+    enum CompetitionStatus
+
+    RankableCompetition  --|> Competition
+    AbstractCompetition  ..|> Competition
+    Match            --|> AbstractCompetition
+    Race             --|> AbstractCompetition
+    GroupStage       --|> AbstractCompetition
+    KnockoutBracket  --|> AbstractCompetition
+    Race             ..|> RankableCompetition
+    GroupStage       ..|> RankableCompetition
+    KnockoutBracket  ..|> RankableCompetition
+}
+
+package "model.bet" {
+    interface Bettable
+
+    class BettingMarket {
+        +getCompetition(): Competition
+        +getAvailableOutcomes(): List<Outcome>
+        +getCurrentOdds(Outcome): Double
+        +getBets(): List<Bet>
+        +addOutcome(Outcome, double)
+        +updateOdds(Outcome, double)
+        +addBet(Bet)
+    }
+
+    class Bet <<record>> {
+        +bettor: Bettor
+        +amount: double
+        +outcome: Outcome
+        +odds: double
+    }
+
+    class OddsHistory {
+        +addOdds(double)
+        +getCurrentOdds(): Double
+        +getHistory(): List<Double>
+    }
+
+    Match           ..|> Bettable
+    Race            ..|> Bettable
+    GroupStage      ..|> Bettable
+    KnockoutBracket ..|> Bettable
+
+    BettingMarket --> Bet
+    BettingMarket --> OddsHistory
+}
+
+package "model.participant" {
+    interface Participant {
+        +getId(): String
+        +getName(): String
+    }
+
+    abstract class BaseParticipant
+    class Player
+    class Team
+
+    BaseParticipant ..|> Participant
+    Player          --|> BaseParticipant
+    Team            --|> BaseParticipant
+}
+
+package "model.bettor" {
+    interface Bettor {
+        +getId(): String
+        +getName(): String
+        +getBalance(): double
+        +setBalance(double)
+    }
+
+    class RegisteredBettor
+
+    RegisteredBettor ..|> Bettor
+}
+
+package "model.outcome" {
+    interface Outcome {
+        +matches(CompetitionResult): boolean
+    }
+
+    class WinnerOutcome     <<record>>
+    class DrawOutcome       <<record>>
+    class PlacementOutcome  <<record>>
+    class WithdrawalOutcome <<record>>
+
+    WinnerOutcome     ..|> Outcome
+    DrawOutcome       ..|> Outcome
+    PlacementOutcome  ..|> Outcome
+    WithdrawalOutcome ..|> Outcome
+}
+
+package "model.result" {
+    interface CompetitionResult
+
+    class MatchResult     <<record>>
+    class RaceResult      <<record>>
+    class StandingsResult <<record>>
+    class CancelledResult <<record>>
+    enum  ParticipantRaceStatus
+    enum  CancelationReason
+
+    MatchResult     ..|> CompetitionResult
+    RaceResult      ..|> CompetitionResult
+    StandingsResult ..|> CompetitionResult
+    CancelledResult ..|> CompetitionResult
+}
+
+' =====================================================================
+' CROSS-LAYER WIRING
+' =====================================================================
+CompetitionService     ..> Competition
+CompetitionService     ..> Sport
+CompetitionService     ..> SportEvent
+BettingBrokerService   ..> BettingMarket
+BettingBrokerService   ..> Bettable
+BettorService          .up.> Bet
+BettorService          .up.> Bettor
+ResultEvaluatorService ..> BettingMarket
+ResultEvaluatorService .up.> CompetitionResult
+
+@enduml
